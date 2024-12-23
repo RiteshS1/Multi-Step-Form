@@ -1,9 +1,6 @@
 # Multi-Step Form
-
 A modern, responsive multi-step form built with Next.js and Tailwind CSS. Features real-time updates, dark mode support, and a smooth user experience.
-
-![Multi-Step Form](https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=1974)
-
+---
 ## Features
 
 - 📱 Responsive design that works on all devices
