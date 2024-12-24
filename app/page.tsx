@@ -93,7 +93,27 @@ export default function Home() {
             Previous
           </Button>
           <Button
-            onClick={handleNext}
+            // onClick={handleNext}
+            {...(formData.currentStep === steps.length ? { onClick: ()=>{
+              alert("Form submitted!");
+              //empty form
+              setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                street: '',
+                city: '',
+                state: '',
+                zipCode: '',
+                notifications: false,
+                newsletter: false,
+                updates: false,
+                currentStep: 1,
+                isSubmitting: false,
+                lastUpdated: new Date().toISOString(),
+              });
+            }} : { onClick: handleNext })}
             disabled={formData.currentStep === steps.length}
           >
             {formData.currentStep === steps.length ? "Submit" : "Next"}

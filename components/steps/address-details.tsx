@@ -23,7 +23,7 @@ export default function AddressDetails() {
             id="street"
             value={formData.street}
             onChange={(e) => setFormData({ street: e.target.value })}
-            placeholder="123 Main St"
+            placeholder="H No. 081, Rajendra Nagar"
           />
         </div>
 
@@ -33,7 +33,7 @@ export default function AddressDetails() {
             id="city"
             value={formData.city}
             onChange={(e) => setFormData({ city: e.target.value })}
-            placeholder="New York"
+            placeholder="Delhi"
           />
         </div>
 
@@ -43,7 +43,7 @@ export default function AddressDetails() {
             id="state"
             value={formData.state}
             onChange={(e) => setFormData({ state: e.target.value })}
-            placeholder="NY"
+            placeholder="IND"
           />
         </div>
 
@@ -53,7 +53,7 @@ export default function AddressDetails() {
             id="zipCode"
             value={formData.zipCode}
             onChange={(e) => setFormData({ zipCode: e.target.value })}
-            placeholder="10001"
+            placeholder="465201"
           />
         </div>
       </div>

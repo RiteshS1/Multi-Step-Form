@@ -23,7 +23,7 @@ export default function PersonalInfo() {
             id="firstName"
             value={formData.firstName}
             onChange={(e) => setFormData({ firstName: e.target.value })}
-            placeholder="John"
+            placeholder="Ritesh"
           />
         </div>
 
@@ -33,7 +33,7 @@ export default function PersonalInfo() {
             id="lastName"
             value={formData.lastName}
             onChange={(e) => setFormData({ lastName: e.target.value })}
-            placeholder="Doe"
+            placeholder="Sharma"
           />
         </div>
 
@@ -44,7 +44,7 @@ export default function PersonalInfo() {
             type="email"
             value={formData.email}
             onChange={(e) => setFormData({ email: e.target.value })}
-            placeholder="john.doe@example.com"
+            placeholder="example@gmail.com"
           />
         </div>
 
@@ -55,7 +55,7 @@ export default function PersonalInfo() {
             type="tel"
             value={formData.phone}
             onChange={(e) => setFormData({ phone: e.target.value })}
-            placeholder="(123) 456-7890"
+            placeholder="(+91) 0123456789"
           />
         </div>
       </div>
