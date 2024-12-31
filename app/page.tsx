@@ -6,14 +6,16 @@ import { useFormStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import PersonalInfo from "@/components/steps/personal-info";
 import AddressDetails from "@/components/steps/address-details";
 import Preferences from "@/components/steps/preferences";
 import Review from "@/components/steps/review";
 
 export default function Home() {
-  const { formData, setFormData } = useFormStore();
+  const { formData, setFormData, resetForm } = useFormStore();
   const [mounted, setMounted] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setMounted(true);
@@ -45,6 +47,45 @@ export default function Home() {
     if (formData.currentStep > 1) {
       setFormData({ currentStep: formData.currentStep - 1 });
     }
+  };
+
+  const handleSubmit = () => {
+    // Basic validation
+    if (!formData.firstName || !formData.lastName || !formData.email) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required personal information.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.street || !formData.city || !formData.state || !formData.zipCode) {
+      toast({
+        title: "Missing Address",
+        description: "Please complete your address details.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Show loading toast
+    toast({
+      title: "Submitting...",
+      description: "Please wait while we process your information.",
+    });
+
+    // Simulate API call
+    setTimeout(() => {
+      toast({
+        title: "Success!✅",
+        description: "Your form has been submitted successfully.",
+        variant: "default",
+      });
+      
+      // Reset form after successful submission
+      resetForm();
+    }, 2000);
   };
 
   return (
@@ -93,28 +134,7 @@ export default function Home() {
             Previous
           </Button>
           <Button
-            // onClick={handleNext}
-            {...(formData.currentStep === steps.length ? { onClick: ()=>{
-              alert("Form submitted!");
-              //empty form
-              setFormData({
-                firstName: '',
-                lastName: '',
-                email: '',
-                phone: '',
-                street: '',
-                city: '',
-                state: '',
-                zipCode: '',
-                notifications: false,
-                newsletter: false,
-                updates: false,
-                currentStep: 1,
-                isSubmitting: false,
-                lastUpdated: new Date().toISOString(),
-              });
-            }} : { onClick: handleNext })}
-            disabled={formData.currentStep === steps.length}
+            onClick={formData.currentStep === steps.length ? handleSubmit : handleNext}
           >
             {formData.currentStep === steps.length ? "Submit" : "Next"}
           </Button>
